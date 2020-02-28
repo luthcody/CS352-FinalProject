@@ -1,0 +1,24 @@
+.animalItemContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+}
+
+.roomIcon {
+    padding: 15px;
+    width: 30px;
+    flex-grow: 0;
+}
+
+.animalName {
+    flex-grow: 1;
+}
+
+.moreVertIcon {
+    padding: 15px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-self: right;
+}

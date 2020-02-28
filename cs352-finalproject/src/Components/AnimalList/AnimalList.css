@@ -1,0 +1,27 @@
+.animalHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+
+}
+
+.myAnimals {
+    padding-left: 10px;
+    flex-grow: 1;
+}
+
+.replayIcon {
+    padding-right: 5px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-self: right;
+}
+
+.addIcon {
+    padding-right: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-self: right;
+}

@@ -1,0 +1,11 @@
+
+.map-holder {
+  position: relative;
+}
+
+.leaflet-container {
+  position: absolute;
+  height: calc(100% - 80px);
+  width: calc(100% - 400px);
+  margin: 0 auto;
+}

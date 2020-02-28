@@ -1,0 +1,17 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-flow: nowrap;
+}
+
+.animalList {
+    max-width: 400px;
+    flex-basis: 400px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.map {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
