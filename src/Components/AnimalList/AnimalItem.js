@@ -7,7 +7,7 @@ class AnimalItem extends Component {
     render() {
         return (
             <div className="animalItemContainer">
-                <div className="roomIcon"><RoomIcon fontSize='large'/></div>
+                <div className="roomIcon" style={{color: this.props.color}}><RoomIcon fontSize='large'/></div>
                 <div className="animalName"><h1>{this.props.name}</h1></div>
                 <div className="moreVertIcon"><MoreVertIcon fontSize='large'/></div>
             </div>

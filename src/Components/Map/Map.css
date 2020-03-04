@@ -5,7 +5,7 @@
 
 .leaflet-container {
   position: absolute;
-  height: calc(100% - 80px);
-  width: calc(100% - 400px);
+  height: calc(100% - 82px);
+  width: calc(100% - 402px);
   margin: 0 auto;
 }

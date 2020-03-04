@@ -1,17 +1,32 @@
 .content {
+    background-color: white;
     display: flex;
     flex-direction: row;
     flex-flow: nowrap;
+    height: 100%;
 }
 
 .animalList {
     max-width: 400px;
     flex-basis: 400px;
+    height: 100%;
     flex-grow: 0;
     flex-shrink: 0;
 }
 
+.extraSpace {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.border {
+    width: 2px;
+    background-color: black;
+}
+
 .map {
+    border-top: 2px solid black;
     flex-grow: 1;
     flex-shrink: 1;
 }

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Animal #1",
+        "nearAddress": "1234 Nulla St. Mississippi 96522",
+        "gpsCoord": "N40° 44.9064', W073° 59.0735'",
+        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+    },
+    {
+        "name": "Animal #2",
+        "nearAddress": "2345 Nulla St. Mississippi 96522",
+        "gpsCoord": "N40° 44.9064', W073° 59.0735'",
+        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+    },
+    {
+        "name": "Animal #3",
+        "nearAddress": "3456 Nulla St. Mississippi 96522",
+        "gpsCoord": "N40° 44.9064', W073° 59.0735'",
+        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+    },
+    {
+        "name": "Animal #4",
+        "nearAddress": "4567 Nulla St. Mississippi 96522",
+        "gpsCoord": "N40° 44.9064', W073° 59.0735'",
+        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+    }
+]

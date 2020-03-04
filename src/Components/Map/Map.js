@@ -23,11 +23,11 @@ class Map extends Component {
                     />
                     <ZoomControl position='topright' />
                     <ScaleControl position='bottomleft' />
-                    <Marker position={position}>
+                    {/* <Marker position={position}>
                         <Popup>
                             A pretty CSS3 popup. <br/> Easily customizable.
                         </Popup>
-                    </Marker>
+                    </Marker> */}
                 </LeafletMap>
             </div>
         );

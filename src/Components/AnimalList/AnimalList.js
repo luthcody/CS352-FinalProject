@@ -2,28 +2,37 @@ import React, {Component} from 'react';
 import AnimalItem from './AnimalItem';
 import ReplayIcon from '@material-ui/icons/Replay';
 import AddIcon from '@material-ui/icons/Add';
+import CustomModal from '../Modal/Modal';
 import './AnimalList.css';
 
 class AnimalList extends Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            name: "Animal #1",
-            nearAddress: "1234 Nulla St. Mississippi 96522",
-            gpsCoord: "N40° 44.9064', W073° 59.0735'",
-            lastUpdate: "May 13, 2014 11:30:00 PM PST"
+            modalOpen: false
         }
     }
 
     render() {
+        var animals = this.props.animals;
+        var colors = this.props.colors;
+        var elements = [];
+        for (var i = 0; i < animals.length; i++){
+            elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]}/>);
+        }
+
         return (
             <div>
                 <div className="animalHeader">
                     <div className="myAnimals"><h1>My Animals</h1></div>
                     <div className="replayIcon"><ReplayIcon fontSize='large'/></div>
-                    <div className="addIcon"><AddIcon fontSize='large'/></div>
+                    <div className="addIcon" onClick={() => this.setState({ modalOpen: true })}><AddIcon fontSize='large'/></div>
+
+                    <CustomModal open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false})} title="Registration" content="Content"/>
                 </div>
-                <AnimalItem name={this.state.name.substring(0,10)} nearAddress={this.state.nearAddress} gpsCoord={this.state.gpsCoord} lastUpdate={this.state.lastUpdate} />
+                <div className="scrollList">
+                    {elements}
+                </div>
             </div>
         )
     }

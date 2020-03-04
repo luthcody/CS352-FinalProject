@@ -1,0 +1,25 @@
+.popupModal {
+    margin: 0 auto;
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    margin-top: 200px;
+    outline: 2px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.close {
+    padding-right: 5px;
+}
+
+.close:hover {
+    color: grey;
+}
