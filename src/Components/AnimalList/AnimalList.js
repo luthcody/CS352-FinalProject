@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import AnimalItem from './AnimalItem';
+import AnimalLoggedOut from './AnimalLoggedOut';
 import ReplayIcon from '@material-ui/icons/Replay';
 import AddIcon from '@material-ui/icons/Add';
 import CustomModal from '../CustomModal/CustomModal';
@@ -17,8 +18,11 @@ class AnimalList extends Component {
         var animals = this.props.animals;
         var colors = this.props.colors;
         var elements = [];
-        for (var i = 0; i < animals.length; i++){
-            elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]}/>);
+
+        if(this.props.loginStatus) {
+            for (var i = 0; i < animals.length; i++){
+                elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]}/>);
+            }
         }
 
         return (

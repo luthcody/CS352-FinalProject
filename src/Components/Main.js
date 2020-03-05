@@ -29,9 +29,8 @@ class Main extends Component {
                 <Header updateLogin={(status, username) => this.updateLogin(status, username)} getLoginStatus={this.state.loginStatus} getUserName={this.state.userName}/>
                 <div className="content">
                     <div className="animalList">
-                        <AnimalList animals={this.state.animals} colors={this.state.colors}/>
+                        <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus}/>
                     </div>
-                    <div className="border"></div>
                     <div className="map">
                         <Map />
                     </div>
