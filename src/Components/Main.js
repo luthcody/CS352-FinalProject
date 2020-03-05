@@ -15,7 +15,7 @@ class Main extends Component {
             animals: animalData.map((data) => data),
             loginStatus: true,
             userName: "group6",
-            colors: randomColor({count: 4, luminosity: "bright"})
+            colors: randomColor({count: 4, luminosity: "dark"})
         }
         this.updateLogin = this.updateLogin.bind(this);
         this.addAnimal = this.addAnimal.bind(this);
@@ -29,8 +29,7 @@ class Main extends Component {
         var newAnimal = {
             "name": name,
             "nearAddress": faker.address.streetAddress() + ", Corvallis OR, 97330",
-            "lat": (Math.random() * (44.573481 - 44.556213) + 44.556213),
-            "lon": (Math.random() * (-123.258426 - -123.299700) + -123.299700),
+            "gpsCoord": [(Math.random() * (44.573481 - 44.556213) + 44.556213), (Math.random() * (-123.258426 - -123.299700) + -123.299700)],
             "lastUpdate": faker.date.recent()
         }
 
@@ -54,7 +53,7 @@ class Main extends Component {
                         <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} addAnimal={(name) => this.addAnimal(name)}/>
                     </div>
                     <div className="map">
-                        <Map />
+                        <Map animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus}/>
                     </div>
                 </div>
             </div>
