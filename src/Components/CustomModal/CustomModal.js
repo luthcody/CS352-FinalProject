@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Modal from '@material-ui/core/Modal';
 import CloseIcon from '@material-ui/icons/Close';
-import './Modal.css';
+import './CustomModal.css';
 
 class CustomModal extends Component {
     render() {

@@ -3,26 +3,44 @@ import './Header.css';
 import TextField from '@material-ui/core/TextField';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import CustomModal from '../Modal/Modal';
+import CustomModal from '../CustomModal/CustomModal';
+import Settings from '../Settings/Settings';
+import AccountLoggedIn from '../Account/AccountLoggedIn';
+import AccountLoggedOut from '../Account/AccountLoggedOut';
 
 class Header extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        this.Logout = this.Logout.bind(this);
+        this.Login = this.Login.bind(this);
+        this.AccountInit = this.AccountInit.bind(this);
+
         this.state = {
             settingsModalOpen: false,
             accountModalOpen: false
         }
     }
 
-    render() {
-        var settingsPopup = (
-            <h1>This is a popup</h1>
-        )
+    Logout() {
+        this.props.updateLogin(false, "");
+    }
+    
+    Login(username) {
+        this.props.updateLogin(true, username);
+    }
 
-        var accountPopup = (
-            <h1>This is a 2nd popup</h1>
-        )
-        
+    AccountInit() {
+        if (this.props.getLoginStatus) {
+            return (<AccountLoggedIn logout={this.Logout} getUserName={this.props.getUserName}/>)
+        } else {
+            return (<AccountLoggedOut login={(username) => this.Login(username)}/>)
+        }
+    }
+
+    render() {
+        var test = this.AccountInit();
+
         return (
             <div className="header">
                 <h1 className="title">Animal Tracker</h1>
@@ -34,8 +52,8 @@ class Header extends Component {
                     <AccountCircleIcon fontSize="large" className="icon" onClick={() => this.setState({ accountModalOpen: true })}/>
                 </div>
 
-                <CustomModal open={this.state.settingsModalOpen} onClose={() => this.setState({ settingsModalOpen: false})} title="Settings" content={settingsPopup}/>
-                <CustomModal open={this.state.accountModalOpen} onClose={() => this.setState({ accountModalOpen: false})} title="Account" content={accountPopup}/>
+                <CustomModal open={this.state.settingsModalOpen} onClose={() => this.setState({ settingsModalOpen: false})} title="Settings" content={<Settings />}/>
+                <CustomModal open={this.state.accountModalOpen} onClose={() => this.setState({ accountModalOpen: false})} title="Account" content={test}/>
 
             </div>
         )

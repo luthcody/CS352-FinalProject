@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import AnimalItem from './AnimalItem';
 import ReplayIcon from '@material-ui/icons/Replay';
 import AddIcon from '@material-ui/icons/Add';
-import CustomModal from '../Modal/Modal';
+import CustomModal from '../CustomModal/CustomModal';
 import './AnimalList.css';
 
 class AnimalList extends Component {

@@ -9,20 +9,27 @@ var randomColor = require('randomcolor');
 
 class Main extends Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            animals: animalData.map((data) => data)
+            animals: animalData.map((data) => data),
+            loginStatus: false,
+            userName: "",
+            colors: randomColor({count: 4, luminosity: "bright"})
         }
+        this.updateLogin = this.updateLogin.bind(this);
+    }
+
+    updateLogin(status, username) {
+        this.setState({loginStatus: status, userName: username});
     }
 
     render() {
-        var colors = randomColor({count: this.state.animals.length, luminosity: "bright"});
         return (
             <div>
-                <Header />
+                <Header updateLogin={(status, username) => this.updateLogin(status, username)} getLoginStatus={this.state.loginStatus} getUserName={this.state.userName}/>
                 <div className="content">
                     <div className="animalList">
-                        <AnimalList animals={this.state.animals} colors={colors}/>
+                        <AnimalList animals={this.state.animals} colors={this.state.colors}/>
                     </div>
                     <div className="border"></div>
                     <div className="map">

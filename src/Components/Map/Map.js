@@ -4,11 +4,11 @@ import './Map.css';
 
 class Map extends Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            lat: 12.5,
-            lng: 19.3,
-            zoom: 5
+            lat: 44.5629321,
+            lng: -123.2836109,
+            zoom: 16
         }
     }
 

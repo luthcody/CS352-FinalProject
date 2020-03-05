@@ -30,3 +30,24 @@
     flex-grow: 1;
     flex-shrink: 1;
 }
+
+button {
+    padding: 20px;
+    margin: 15px;
+    background-color: white; /* Green */
+    border: 2px solid black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: black; /* Green */
+    color: white;
+}
+
+h2 { 
+    font-size: 32px;
+}

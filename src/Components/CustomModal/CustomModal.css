@@ -18,6 +18,7 @@
 
 .close {
     padding-right: 5px;
+    transition: 0.3s;
 }
 
 .close:hover {

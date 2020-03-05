@@ -1,0 +1,25 @@
+.settingsButtons {
+    width: 150px;
+}
+
+.settings {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.settingsOption {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.settingsTitle {
+    padding-right: 20px;
+    margin-left: 15px;
+    width: 175px;
+    text-align: right;
+}
+
+.select {
+    width: 250px;
+}
