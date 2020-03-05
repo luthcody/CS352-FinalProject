@@ -39,7 +39,7 @@ class Header extends Component {
     }
 
     render() {
-        var test = this.AccountInit();
+        var account = this.AccountInit();
 
         return (
             <div className="header">
@@ -53,7 +53,7 @@ class Header extends Component {
                 </div>
 
                 <CustomModal open={this.state.settingsModalOpen} onClose={() => this.setState({ settingsModalOpen: false})} title="Settings" content={<Settings />}/>
-                <CustomModal open={this.state.accountModalOpen} onClose={() => this.setState({ accountModalOpen: false})} title="Account" content={test}/>
+                <CustomModal open={this.state.accountModalOpen} onClose={() => this.setState({ accountModalOpen: false})} title="Account" content={account}/>
 
             </div>
         )

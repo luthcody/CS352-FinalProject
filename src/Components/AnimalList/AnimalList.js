@@ -4,6 +4,7 @@ import AnimalLoggedOut from './AnimalLoggedOut';
 import ReplayIcon from '@material-ui/icons/Replay';
 import AddIcon from '@material-ui/icons/Add';
 import CustomModal from '../CustomModal/CustomModal';
+import AnimalRegistration from './AnimalRegistration';
 import './AnimalList.css';
 
 class AnimalList extends Component {
@@ -12,27 +13,45 @@ class AnimalList extends Component {
         this.state = {
             modalOpen: false
         }
+        this.openModal = this.openModal.bind(this);
+        this.addAnimal = this.addAnimal.bind(this);
+    }
+
+    openModal() {
+        if(this.props.loginStatus){
+            this.setState({ modalOpen: true });  
+        }
+    }
+
+    addAnimal(name) {
+        this.props.addAnimal(name);
+        this.setState({modalOpen: false});
     }
 
     render() {
         var animals = this.props.animals;
         var colors = this.props.colors;
-        var elements = [];
+        var elements;
 
         if(this.props.loginStatus) {
+            elements = [];
             for (var i = 0; i < animals.length; i++){
                 elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]}/>);
             }
+        } else {
+            elements = (<AnimalLoggedOut />)
         }
+
+        var registration = (<AnimalRegistration addAnimal={(name) => this.addAnimal(name)} />);
 
         return (
             <div>
                 <div className="animalHeader">
                     <div className="myAnimals"><h1>My Animals</h1></div>
-                    <div className="replayIcon"><ReplayIcon fontSize='large'/></div>
-                    <div className="addIcon" onClick={() => this.setState({ modalOpen: true })}><AddIcon fontSize='large'/></div>
+                    <div className={'replayIcon ' + this.props.loginStatus}><ReplayIcon fontSize='large'/></div>
+                    <div className={'addIcon ' + this.props.loginStatus} onClick={this.openModal}><AddIcon fontSize='large'/></div>
 
-                    <CustomModal open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false})} title="Registration" content="Content"/>
+                    <CustomModal open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false})} title="Registration" content={registration}/>
                 </div>
                 <div className="scrollList">
                     {elements}

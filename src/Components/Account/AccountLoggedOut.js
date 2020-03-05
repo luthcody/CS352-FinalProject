@@ -34,21 +34,21 @@ class AccountLoggedOut extends Component {
     }
 
     Login() {
-        if (this.state.username.length == 0) {
+        if (this.state.username.length === 0) {
             this.setState({usernameError: true, usernameHelpText: "Username cannot be empty"});
             return;
         } else {
             this.setState({usernameError: false, usernameHelpText: ""});
         }
 
-        if (this.state.password.length == 0) {
+        if (this.state.password.length === 0) {
             this.setState({passwordError: true, passwordHelpText: "Password cannot be empty"});
             return;
         } else {
             this.setState({passwordError: false, passwordHelpText: ""});
         }
 
-        if (this.state.username == "group6" && this.state.password == "password") {
+        if (this.state.username === "group6" && this.state.password === "password") {
             this.props.login(this.state.username);
         } else {
             this.setState({usernameError: true, passwordError: true, passwordHelpText: "Username or Password Incorrect."});

@@ -35,8 +35,22 @@
     color: grey;
 }
 
+.false, .false:hover {
+    color: lightgray;
+}
+
 .scrollList {
     height: calc(100vh - 144px);
     overflow: auto;
+}
+
+.animalLoggedOutContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    margin-left: 40px;
+    margin-top: 50px;
+    font-size: 24px;
 }
 
