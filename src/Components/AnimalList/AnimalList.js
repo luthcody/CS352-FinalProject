@@ -36,7 +36,7 @@ class AnimalList extends Component {
         if(this.props.loginStatus) {
             elements = [];
             for (var i = 0; i < animals.length; i++){
-                elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]}/>);
+                elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]} markerFocus={(coords) => this.props.markerFocus(coords)} />);
             }
         } else {
             elements = (<AnimalLoggedOut />)
@@ -48,7 +48,7 @@ class AnimalList extends Component {
             <div>
                 <div className="animalHeader">
                     <div className="myAnimals"><h1>My Animals</h1></div>
-                    <div className={'replayIcon ' + this.props.loginStatus}><ReplayIcon fontSize='large'/></div>
+                    <div className={'replayIcon ' + this.props.loginStatus} onClick={this.props.resetMap}><ReplayIcon fontSize='large'/></div>
                     <div className={'addIcon ' + this.props.loginStatus} onClick={this.openModal}><AddIcon fontSize='large'/></div>
 
                     <CustomModal open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false})} title="Registration" content={registration}/>

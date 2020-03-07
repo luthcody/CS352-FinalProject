@@ -1,26 +1,26 @@
 [
     {
         "name": "Animal #1",
-        "nearAddress": "1234 Nulla St. Mississippi 96522",
+        "nearAddress": "1234 35th St. Corvallis OR, 97330",
         "gpsCoord": [44.56938119151157, -123.26711513994536],
-        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+        "lastUpdate": "Fri Mar 06 2020 04:50:24 GMT-0800 (Pacific Standard Time)"
     },
     {
         "name": "Animal #2",
-        "nearAddress": "2345 Nulla St. Mississippi 96522",
+        "nearAddress": "2345 24th St. Corvallis OR, 97330",
         "gpsCoord": [44.56824256662463, -123.29821802853783],
-        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+        "lastUpdate": "Fri Mar 06 2020 04:53:11 GMT-0800 (Pacific Standard Time)"
     },
     {
         "name": "Animal #3",
-        "nearAddress": "3456 Nulla St. Mississippi 96522",
+        "nearAddress": "3456 29th St. Corvallis OR, 97330",
         "gpsCoord": [44.55802937046463, -123.27776350597968],
-        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+        "lastUpdate": "Fri Mar 06 2020 04:48:46 GMT-0800 (Pacific Standard Time)"
     },
     {
         "name": "Animal #4",
-        "nearAddress": "4567 Nulla St. Mississippi 96522",
+        "nearAddress": "4567 30th St. Corvallis OR, 97330",
         "gpsCoord": [44.564042046602125, -123.26391340319842],
-        "lastUpdate": "May 13, 2014 11:30:00 PM PST"
+        "lastUpdate": "Fri Mar 06 2020 04:56:19 GMT-0800 (Pacific Standard Time)"
     }
 ]

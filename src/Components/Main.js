@@ -4,9 +4,9 @@ import Map from './Map/Map';
 import AnimalList from './AnimalList/AnimalList';
 import animalData from './data.json';
 import './Main.css'
-
 var randomColor = require('randomcolor');
 var faker = require('faker');
+
 
 class Main extends Component {
     constructor() {
@@ -15,10 +15,14 @@ class Main extends Component {
             animals: animalData.map((data) => data),
             loginStatus: true,
             userName: "group6",
-            colors: randomColor({count: 4, luminosity: "dark"})
+            colors: randomColor({count: 4, luminosity: "dark"}),
+            resetMap: false,
+            mapFocusCoords: [44.5629321, -123.2836109],
+            showOne: false
         }
         this.updateLogin = this.updateLogin.bind(this);
         this.addAnimal = this.addAnimal.bind(this);
+        this.resetMapPosition = this.resetMapPosition.bind(this);
     }
 
     updateLogin(status, username) {
@@ -30,7 +34,7 @@ class Main extends Component {
             "name": name,
             "nearAddress": faker.address.streetAddress() + ", Corvallis OR, 97330",
             "gpsCoord": [(Math.random() * (44.573481 - 44.556213) + 44.556213), (Math.random() * (-123.258426 - -123.299700) + -123.299700)],
-            "lastUpdate": faker.date.recent()
+            "lastUpdate": faker.date.recent().toString()
         }
 
         var updatedAnimals = this.state.animals;
@@ -44,16 +48,20 @@ class Main extends Component {
         return newAnimal;
     }
 
+    resetMapPosition() {
+        this.setState({resetMap: !this.state.resetMap, showOne: false});
+    }
+
     render() {
         return (
             <div>
                 <Header updateLogin={(status, username) => this.updateLogin(status, username)} getLoginStatus={this.state.loginStatus} getUserName={this.state.userName}/>
                 <div className="content">
                     <div className="animalList">
-                        <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} addAnimal={(name) => this.addAnimal(name)}/>
+                        <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} addAnimal={(name) => this.addAnimal(name)} resetMap={this.resetMapPosition} markerFocus={(coords) => this.setState({mapFocusCoords: coords, showOne: true})}/>
                     </div>
                     <div className="map">
-                        <Map animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus}/>
+                        <Map mapFocusCoords={this.state.mapFocusCoords} mapZoopLevel={this.state.mapZoopLevel} animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} showOne={this.state.showOne}/>
                     </div>
                 </div>
             </div>

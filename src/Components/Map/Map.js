@@ -9,14 +9,11 @@ class Map extends Component {
     constructor() {
         super();
         this.state = {
-            centerLat: 44.5629321,
-            centerLng: -123.2836109,
-            zoom: 16
+            zoom: 18
         }
     }
 
     render() {
-        var position = [this.state.centerLat, this.state.centerLng];
         var animals = this.props.animals;
         var colors = this.props.colors;
         var pins = [];
@@ -26,24 +23,50 @@ class Map extends Component {
         if(this.props.loginStatus){
             for(var i = 0; i < animals.length; i++){
                 const iconPerson = Leaflet.divIcon({ className: "mapIcon", html: ReactDOMServer.renderToString(<RoomIcon fontSize='large' style={{color: colors[i], border: 10}}/>), iconAnchor: [18,3]})
-                pins.push(<Marker position={animals[i].gpsCoord} icon={iconPerson}><Popup>Put stuff here... <br/> And also here.</Popup></Marker>);
+                var popupContent = (
+                    <div>
+                        <b><h3>{animals[i].name}</h3></b>
+                        <b>Nearest Address:</b><br/>
+                        {animals[i].nearAddress}<br/><br/>
+                        <b>Last GPS Coordiantes (Lat, Lon):</b><br/>  
+                        ({animals[i].gpsCoord[0]}, {animals[i].gpsCoord[1]})<br/><br/>
+                        <b>Time Last Updated:</b><br/>  
+                        {animals[i].lastUpdate}
+                    </div>
+                )
+                pins.push(<Marker position={animals[i].gpsCoord} icon={iconPerson}><Popup>{popupContent}</Popup></Marker>);
                 coords.push(animals[i].gpsCoord);
             }
             bounds = Leaflet.latLngBounds(coords);
         }
 
+        var mapContent = (
+            <div>
+                <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+                <ZoomControl position='topright' />
+                <ScaleControl position='bottomleft' />
+                {pins}
+            </div>
+        )
+
+        var content;
+        if(this.props.showOne) {
+            content = (            
+                <LeafletMap center={this.props.mapFocusCoords} zoom={this.state.zoom} zoomControl={false}>
+                    {mapContent}
+                </LeafletMap>
+            )
+        } else {
+            content = (            
+                <LeafletMap zoomControl={false} bounds={bounds}>
+                    {mapContent}
+                </LeafletMap>
+            )
+        }
 
         return (
             <div className="mapHolder">
-                <LeafletMap center={position} zoom={this.state.zoom} zoomControl={false} bounds={bounds}>
-                    <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-                    />
-                    <ZoomControl position='topright' />
-                    <ScaleControl position='bottomleft' />
-                    {pins}
-                </LeafletMap>
+                {content}
             </div>
         );
     }
