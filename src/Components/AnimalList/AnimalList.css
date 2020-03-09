@@ -22,6 +22,7 @@
 
 .replayIcon:hover {
     color: grey;
+    cursor: pointer;
 }
 
 .addIcon {
@@ -32,6 +33,7 @@
 
 .addIcon:hover {
     color: grey;
+    cursor: pointer;
 }
 
 .false, .false:hover {

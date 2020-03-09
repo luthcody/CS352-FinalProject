@@ -36,6 +36,7 @@
 
 .icon:hover {
     color: grey;
+    cursor: pointer;
 }
 
 h1 {
