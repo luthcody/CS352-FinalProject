@@ -52,13 +52,13 @@ class Map extends Component {
         var content;
         if(this.props.showOne) {
             content = (            
-                <LeafletMap center={this.props.mapFocusCoords} zoom={this.state.zoom} zoomControl={false}>
+                <LeafletMap center={this.props.mapFocusCoords} zoom={this.state.zoom} zoomControl={false} style={{zIndex: 0}}>
                     {mapContent}
                 </LeafletMap>
             )
         } else {
             content = (            
-                <LeafletMap zoomControl={false} bounds={bounds}>
+                <LeafletMap zoomControl={false} bounds={bounds} style={{zIndex: 0}}>
                     {mapContent}
                 </LeafletMap>
             )

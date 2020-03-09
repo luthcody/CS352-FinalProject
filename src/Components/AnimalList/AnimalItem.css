@@ -7,6 +7,14 @@
     width: 100%;
 }
 
+.animalItemFirst {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+}
+
 .animalItemContainer:hover {
     background-color: gray;
     color: white;
@@ -27,4 +35,9 @@
     flex-grow: 0;
     flex-shrink: 0;
     justify-self: right;
+}
+
+.moreVertPopover {
+    background-color: white;
+    padding: 15px;
 }
