@@ -25,10 +25,9 @@
 }
 
 .addIcon {
-    padding-right: 10px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    justify-self: right;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
 }
 
 .addIcon:hover {

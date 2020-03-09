@@ -51,14 +51,6 @@ class Main extends Component {
 
     deleteAnimal(index) {
         // Implement Later
-
-        // var tempArray = [];
-        // for(var i = 0; i < tempArray.length; i++){
-        //     if(i !== index){
-        //         tempArray.push(this.state.animals[i]);
-        //     }
-        // }
-        // this.setState({animals: tempArray});
     }
 
     resetMapPosition() {

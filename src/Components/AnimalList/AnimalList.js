@@ -53,8 +53,11 @@ class AnimalList extends Component {
             <div>
                 <div className="animalHeader">
                     <div className="myAnimals"><h1>My Animals</h1></div>
-                    <div className={'replayIcon ' + this.props.loginStatus} onClick={this.props.resetMap}><ReplayIcon fontSize='large'/></div>
-                    <div className={'addIcon ' + this.props.loginStatus} onClick={this.openModal}><AddIcon fontSize='large'/></div>
+                    {/* <div className={'replayIcon ' + this.props.loginStatus} onClick={this.props.resetMap}><ReplayIcon fontSize='large'/></div> */}
+                    <div className={'addIcon ' + this.props.loginStatus} onClick={this.openModal}>
+                        <div className="addAPet">Add a Pet</div>
+                        <div className="addIcon"><AddIcon fontSize='large'/></div>
+                    </div>
 
                     <CustomModal open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false})} title="Registration" content={registration}/>
                 </div>
