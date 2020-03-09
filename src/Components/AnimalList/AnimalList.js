@@ -15,6 +15,7 @@ class AnimalList extends Component {
         }
         this.openModal = this.openModal.bind(this);
         this.addAnimal = this.addAnimal.bind(this);
+        this.deleteAnimal = this.deleteAnimal.bind(this);
     }
 
     openModal() {
@@ -28,6 +29,10 @@ class AnimalList extends Component {
         this.setState({modalOpen: false});
     }
 
+    deleteAnimal(index) {
+        this.props.delete(index);
+    }
+
     render() {
         var animals = this.props.animals;
         var colors = this.props.colors;
@@ -36,7 +41,7 @@ class AnimalList extends Component {
         if(this.props.loginStatus) {
             elements = [];
             for (var i = 0; i < animals.length; i++){
-                elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]} markerFocus={(coords) => this.props.markerFocus(coords)} />);
+                elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]} markerFocus={(coords) => this.props.markerFocus(coords)} delete={() => this.deleteAnimal(i)}/>);
             }
         } else {
             elements = (<AnimalLoggedOut />)

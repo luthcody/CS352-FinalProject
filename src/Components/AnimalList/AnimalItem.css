@@ -38,6 +38,15 @@
 }
 
 .moreVertPopover {
-    background-color: white;
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    padding: 8px;
+}
+
+.popoverButton {
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+    background-color: lightgray;
 }

@@ -1,6 +1,7 @@
 .animalRegistration {
     margin-top: 15px;
     margin-bottom: 15px;
+    z-index: 0;
 }
 
 .username {
@@ -22,4 +23,18 @@
 
 .input {
     width: 250px;
+}
+
+.helpIcon {
+    margin-left: 10px;
+}
+
+.react-tiny-popover-container {
+    z-index: 1500;
+}
+
+.registrationPopover {
+    background-color: lightgray;
+    max-width: 200px;
+    padding: 10px;
 }

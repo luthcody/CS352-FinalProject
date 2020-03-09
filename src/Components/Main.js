@@ -23,6 +23,7 @@ class Main extends Component {
         this.updateLogin = this.updateLogin.bind(this);
         this.addAnimal = this.addAnimal.bind(this);
         this.resetMapPosition = this.resetMapPosition.bind(this);
+        this.deleteAnimal = this.deleteAnimal.bind(this);
     }
 
     updateLogin(status, username) {
@@ -48,6 +49,18 @@ class Main extends Component {
         return newAnimal;
     }
 
+    deleteAnimal(index) {
+        // Implement Later
+
+        // var tempArray = [];
+        // for(var i = 0; i < tempArray.length; i++){
+        //     if(i !== index){
+        //         tempArray.push(this.state.animals[i]);
+        //     }
+        // }
+        // this.setState({animals: tempArray});
+    }
+
     resetMapPosition() {
         this.setState({resetMap: !this.state.resetMap, showOne: false});
     }
@@ -58,7 +71,7 @@ class Main extends Component {
                 <Header updateLogin={(status, username) => this.updateLogin(status, username)} getLoginStatus={this.state.loginStatus} getUserName={this.state.userName}/>
                 <div className="content">
                     <div className="animalList">
-                        <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} addAnimal={(name) => this.addAnimal(name)} resetMap={this.resetMapPosition} markerFocus={(coords) => this.setState({mapFocusCoords: coords, showOne: true})}/>
+                        <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} addAnimal={(name) => this.addAnimal(name)} resetMap={this.resetMapPosition} markerFocus={(coords) => this.setState({mapFocusCoords: coords, showOne: true})} delete={(index) => this.deleteAnimal(index)}/>
                     </div>
                     <div className="map">
                         <Map mapFocusCoords={this.state.mapFocusCoords} mapZoopLevel={this.state.mapZoopLevel} animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} showOne={this.state.showOne}/>

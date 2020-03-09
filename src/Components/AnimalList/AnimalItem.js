@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import RoomIcon from '@material-ui/icons/Room';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Popover, {ArrowContainer} from 'react-tiny-popover'
-
+import Popover, {ArrowContainer} from 'react-tiny-popover';
 import './AnimalItem.css'
 
 class AnimalItem extends Component {
@@ -12,10 +11,15 @@ class AnimalItem extends Component {
             isPopoverOpen: false
         }
         this.markerFocus = this.markerFocus.bind(this);
+        this.deleteAnimal = this.deleteAnimal.bind(this);
     }
 
     markerFocus() {
         this.props.markerFocus(this.props.gpsCoord);
+    }
+
+    deleteAnimal() {
+        this.props.delete(this.props.index);
     }
 
     render() {
@@ -32,12 +36,16 @@ class AnimalItem extends Component {
                     <ArrowContainer position={position}
                         targetRect={targetRect}
                         popoverRect={popoverRect}
-                        arrowColor={'white'}
-                        arrowSize={15}
-                        borderStyle={'solid'}>
-                            <div className="moreVertPopover">
-                                Hi! I'm popover content.
-                            </div>
+                        arrowColor={'lightgray'}
+                        arrowSize={15} >
+                        <div className="moreVertPopover">
+                            <button className="popoverButton">
+                                Rename
+                            </button>
+                            <button className="popoverButton" onClick={this.deleteAnimal}>
+                                Delete
+                            </button>
+                        </div>
                     </ArrowContainer>
                 )}>
                 <div className="moreVertIcon"><MoreVertIcon fontSize='large' onClick={() => this.setState({ isPopoverOpen: !this.isPopoverOpen })}/></div>
