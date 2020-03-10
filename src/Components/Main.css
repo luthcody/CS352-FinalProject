@@ -39,10 +39,14 @@ button {
     transition: 0.3s;
 }
 
-button:hover {
+button:enabled:hover {
     background-color: black; /* Green */
     color: white;
     cursor: pointer;
+}
+
+button:disabled {
+    background-color: grey;
 }
 
 h2 { 

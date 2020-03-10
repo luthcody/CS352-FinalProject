@@ -35,6 +35,8 @@ class Map extends Component {
         var coords = [];
         var bounds = [];
 
+        var zoom = this.state.zoom;
+
         if(this.props.loginStatus){
             for(var i = 0; i < animals.length; i++){
                 const iconPerson = Leaflet.divIcon({ className: "mapIcon", html: ReactDOMServer.renderToString(<RoomIcon fontSize='large' style={{color: colors[i], border: 10}}/>), iconAnchor: [18,3]})
@@ -55,20 +57,10 @@ class Map extends Component {
             bounds = Leaflet.latLngBounds(coords);
         }
 
-        var mapContent = (
-            <div>
-                <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-                <ZoomControl position='topright' />
-                <ScaleControl position='bottomleft' />
-                {pins}
-            </div>
-        )
-
-        var zoom = this.state.zoom;
-
         var center, showOne;
 
-        if(this.props.animals.length > 0){
+        if(this.props.animals.length > 0 && this.props.loginStatus){
+            console.log('In here!');
             showOne = this.props.showOne || ((bounds.getSouthWest().lat === bounds.getNorthEast().lat) && (bounds.getSouthWest().lng === bounds.getNorthEast().lng)) || (this.props.animals && this.props.animals.length === 1)
             if (this.props.showOne) {
                 center = this.props.mapFocusCoords;
@@ -78,9 +70,20 @@ class Map extends Component {
                 center = this.props.animals[0].gpsCoord;
             }
         } else {
+            console.log("Nope, in here actually!");
+            center = [44.5629321, -123.2836109];
             showOne = true;
-            zoom = 18;
+            zoom = 12;
         }
+
+        var mapContent = (
+            <div>
+                <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+                <ZoomControl position='topright' />
+                <ScaleControl position='bottomleft' />
+                {pins}
+            </div>
+        )
 
         var content;
         if(showOne) {

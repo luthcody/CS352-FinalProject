@@ -10,7 +10,7 @@ class AccountLoggedIn extends Component {
                     <h2 className="username">{this.props.getUserName}</h2>
                 </div>
                 <div className="buttons">
-                    <button>Account Settings</button>
+                    <button disabled>Account Settings</button>
                     <button onClick={this.props.logout}>Log Out</button>
                 </div>
             </div>

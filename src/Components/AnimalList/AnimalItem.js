@@ -40,7 +40,7 @@ class AnimalItem extends Component {
                         arrowColor={'lightgray'}
                         arrowSize={15} >
                         <div className="moreVertPopover">
-                            <button className="popoverButton">
+                            <button disabled className="popoverButton">
                                 Rename
                             </button>
                             <button className="popoverButton" onClick={this.deleteAnimal}>
