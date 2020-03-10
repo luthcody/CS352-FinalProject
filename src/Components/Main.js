@@ -63,10 +63,10 @@ class Main extends Component {
                 <Header updateLogin={(status, username) => this.updateLogin(status, username)} getLoginStatus={this.state.loginStatus} getUserName={this.state.userName}/>
                 <div className="content">
                     <div className="animalList">
-                        <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} addAnimal={(name) => this.addAnimal(name)} resetMap={this.resetMapPosition} markerFocus={(coords) => this.setState({mapFocusCoords: coords, showOne: true})} delete={(index) => this.deleteAnimal(index)}/>
+                        <AnimalList animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} addAnimal={(name) => this.addAnimal(name)} markerFocus={(coords) => this.setState({mapFocusCoords: coords, showOne: true})} delete={(index) => this.deleteAnimal(index)}/>
                     </div>
                     <div className="map">
-                        <Map mapFocusCoords={this.state.mapFocusCoords} mapZoopLevel={this.state.mapZoopLevel} animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} showOne={this.state.showOne}/>
+                        <Map key={this.state.resetMap} mapFocusCoords={this.state.mapFocusCoords} mapZoopLevel={this.state.mapZoopLevel} animals={this.state.animals} colors={this.state.colors} loginStatus={this.state.loginStatus} showOne={this.state.showOne} resetMap={this.resetMapPosition} markerFocus={(coords) => this.setState({mapFocusCoords: coords, showOne: true})}/>
                     </div>
                 </div>
             </div>

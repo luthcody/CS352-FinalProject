@@ -13,18 +13,6 @@
     flex-grow: 1;
 }
 
-.replayIcon {
-    padding-right: 5px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    justify-self: right;
-}
-
-.replayIcon:hover {
-    color: grey;
-    cursor: pointer;
-}
-
 .addIcon {
     display: flex;
     align-items: center;
@@ -55,3 +43,10 @@
     font-size: 24px;
 }
 
+.iconSuccess {
+    color: green;
+}
+
+.iconFail {
+    color: red;
+}

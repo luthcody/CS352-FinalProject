@@ -14,3 +14,32 @@
   width: 50px;
   height: 100px;
 }
+
+.searchForm {
+  flex-grow: 2;
+  align-content: center;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  margin: 10px;
+  width: 300px;
+  border-radius: 3px;
+}
+
+.replayIcon {
+  position: relative;
+  float: right;
+  z-index: 2;
+  margin-top: 70px;
+  margin-right: 10px;
+  padding: 3px;
+  padding-top: 5px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px grey;
+  background-color: white;
+}
+
+.replayIcon:hover {
+  color: grey;
+  cursor: pointer;
+}

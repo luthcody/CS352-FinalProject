@@ -1,32 +1,46 @@
 import React, {Component} from 'react';
 import AnimalItem from './AnimalItem';
 import AnimalLoggedOut from './AnimalLoggedOut';
-import ReplayIcon from '@material-ui/icons/Replay';
 import AddIcon from '@material-ui/icons/Add';
 import CustomModal from '../CustomModal/CustomModal';
 import AnimalRegistration from './AnimalRegistration';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import './AnimalList.css';
 
 class AnimalList extends Component {
     constructor() {
         super();
         this.state = {
-            modalOpen: false
+            registrationModalOpen: false,
+            successModalOpen: false,
+            failModalOpen: false
         }
-        this.openModal = this.openModal.bind(this);
+        this.openRegistrationModal = this.openRegistrationModal.bind(this);
         this.addAnimal = this.addAnimal.bind(this);
+        this.verifyAnimal = this.verifyAnimal.bind(this);
         this.deleteAnimal = this.deleteAnimal.bind(this);
     }
 
-    openModal() {
+    openRegistrationModal() {
         if(this.props.loginStatus){
-            this.setState({ modalOpen: true });  
+            this.setState({ registrationModalOpen: true });  
         }
     }
 
     addAnimal(name) {
         this.props.addAnimal(name);
-        this.setState({modalOpen: false});
+        this.setState({registrationModalOpen: false});
+        this.setState({successModalOpen: true});
+    }
+
+    verifyAnimal(name) {
+        if(name === "Test") {
+            this.setState({registrationModalOpen: false});
+            this.setState({failModalOpen: true})
+        } else {
+            this.addAnimal(name);
+        }
     }
 
     deleteAnimal(index) {
@@ -47,19 +61,36 @@ class AnimalList extends Component {
             elements = (<AnimalLoggedOut />)
         }
 
-        var registration = (<AnimalRegistration addAnimal={(name) => this.addAnimal(name)} />);
+        var registration = (<AnimalRegistration addAnimal={(name) => this.verifyAnimal(name)} />);
+        var registrationSuccess = (
+            <div>
+                <div className="iconSuccess"><CheckCircleOutlineIcon style={{ fontSize: 150 }}/></div>
+                <h3>Your collar has been registered.</h3>
+                <button onClick={() => this.setState({successModalOpen: false})}>Close</button>
+            </div>
+        );
+        var registrationFailure = (
+            <div>
+                <div className="iconFail"><HighlightOffIcon style={{ fontSize: 150 }}/></div>
+                <h3>Registration Failed!</h3>
+                <h3>The collar ID could not be found.</h3>
+                <button onClick={() => this.setState({failModalOpen: false, registrationModalOpen: true})}>Try Again</button>
+            </div>
+        );
 
         return (
             <div>
                 <div className="animalHeader">
                     <div className="myAnimals"><h1>My Animals</h1></div>
-                    {/* <div className={'replayIcon ' + this.props.loginStatus} onClick={this.props.resetMap}><ReplayIcon fontSize='large'/></div> */}
-                    <div className={'addIcon ' + this.props.loginStatus} onClick={this.openModal}>
+                    <div className={'addIcon ' + this.props.loginStatus} onClick={this.openRegistrationModal}>
                         <div className="addAPet">Add a Pet</div>
                         <div className="addIcon"><AddIcon fontSize='large'/></div>
                     </div>
 
-                    <CustomModal open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false})} title="Registration" content={registration}/>
+                    <CustomModal open={this.state.registrationModalOpen} onClose={() => this.setState({ registrationModalOpen: false})} title="Registration" content={registration}/>
+                    <CustomModal open={this.state.successModalOpen} onClose={() => this.setState({ successModalOpen: false})} title="Registration" content={registrationSuccess}/>
+                    <CustomModal open={this.state.failModalOpen} onClose={() => this.setState({ failModalOpen: false})} title="Registration" content={registrationFailure}/>
+
                 </div>
                 <div className="scrollList">
                     {elements}

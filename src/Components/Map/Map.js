@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl, ScaleControl } from 'react-leaflet';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Leaflet from 'leaflet';
 import RoomIcon from '@material-ui/icons/RoomRounded';
+import ReplayIcon from '@material-ui/icons/Replay';
+
 import './Map.css';
 
 class Map extends Component {
@@ -11,11 +15,23 @@ class Map extends Component {
         this.state = {
             zoom: 18
         }
+        this.getSearchAnimalFocus = this.getSearchAnimalFocus.bind(this);
+    }
+
+    getSearchAnimalFocus(id) {
+        console.log("ID: ", id);
+        if (id !== -1) {
+            var coords = this.props.animals[id].gpsCoord;
+            this.props.markerFocus(coords);
+        } else {
+            this.props.resetMap();
+        }
     }
 
     render() {
         var animals = this.props.animals;
         var colors = this.props.colors;
+        var animalNames = this.props.animals.map(animal => animal.name)
         var pins = [];
         var coords = [];
         var bounds;
@@ -66,6 +82,16 @@ class Map extends Component {
 
         return (
             <div className="mapHolder">
+                <div className="searchForm">
+                    <Autocomplete
+                        onChange={(event, value) => this.getSearchAnimalFocus(animalNames.indexOf(value))}
+                        options={animalNames}
+                        renderInput={params => (
+                            <TextField {...params} label="Search" variant="outlined" />
+                        )}
+                    />
+                </div>
+                <div className="replayIcon" onClick={this.props.resetMap}><ReplayIcon fontSize='small'/></div>
                 {content}
             </div>
         );
