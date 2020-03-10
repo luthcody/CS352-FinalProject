@@ -13,15 +13,23 @@
     flex-grow: 1;
 }
 
-.addIcon {
+.addIconContainer {
     display: flex;
     align-items: center;
     margin-right: 5px;
+    border: 1px black solid;
+    padding-left: 10px;
+    padding-right: 3px;
+    border-radius: 5px; 
 }
 
-.addIcon:hover {
+.addIconContainer:hover {
     color: grey;
     cursor: pointer;
+}
+
+.addAPet {
+    padding-bottom: 3px;
 }
 
 .false, .false:hover {

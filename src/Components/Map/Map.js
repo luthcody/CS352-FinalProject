@@ -19,7 +19,6 @@ class Map extends Component {
     }
 
     getSearchAnimalFocus(id) {
-        console.log("ID: ", id);
         if (id !== -1) {
             var coords = this.props.animals[id].gpsCoord;
             this.props.markerFocus(coords);
@@ -31,10 +30,10 @@ class Map extends Component {
     render() {
         var animals = this.props.animals;
         var colors = this.props.colors;
-        var animalNames = this.props.animals.map(animal => animal.name)
+        var animalNames = this.props.loginStatus ? this.props.animals.map(animal => animal.name) : [];
         var pins = [];
         var coords = [];
-        var bounds;
+        var bounds = [];
 
         if(this.props.loginStatus){
             for(var i = 0; i < animals.length; i++){
@@ -65,10 +64,28 @@ class Map extends Component {
             </div>
         )
 
+        var zoom = this.state.zoom;
+
+        var center, showOne;
+
+        if(this.props.animals.length > 0){
+            showOne = this.props.showOne || ((bounds.getSouthWest().lat === bounds.getNorthEast().lat) && (bounds.getSouthWest().lng === bounds.getNorthEast().lng)) || (this.props.animals && this.props.animals.length === 1)
+            if (this.props.showOne) {
+                center = this.props.mapFocusCoords;
+            } else if ((bounds.getSouthWest().lat === bounds.getNorthEast().lat) && (bounds.getSouthWest().lng === bounds.getNorthEast().lng)){
+                center = bounds.getCenter();
+            } else if (this.props.animals && this.props.animals.length === 1) {
+                center = this.props.animals[0].gpsCoord;
+            }
+        } else {
+            showOne = true;
+            zoom = 18;
+        }
+
         var content;
-        if(this.props.showOne) {
+        if(showOne) {
             content = (            
-                <LeafletMap center={this.props.mapFocusCoords} zoom={this.state.zoom} zoomControl={false} style={{zIndex: 0}}>
+                <LeafletMap center={center} zoom={zoom} zoomControl={false} style={{zIndex: 0}}>
                     {mapContent}
                 </LeafletMap>
             )

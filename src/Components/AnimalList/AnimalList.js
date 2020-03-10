@@ -55,7 +55,7 @@ class AnimalList extends Component {
         if(this.props.loginStatus) {
             elements = [];
             for (var i = 0; i < animals.length; i++){
-                elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]} markerFocus={(coords) => this.props.markerFocus(coords)} delete={() => this.deleteAnimal(i)}/>);
+                elements.push(<AnimalItem name={animals[i].name.substring(0,10)} nearAddress={animals[i].nearAddress} gpsCoord={animals[i].gpsCoord} lastUpdate={animals[i].lastUpdate} color={colors[i]} markerFocus={(coords) => this.props.markerFocus(coords)} delete={this.deleteAnimal} index={i}/>);
             }
         } else {
             elements = (<AnimalLoggedOut />)
@@ -72,7 +72,7 @@ class AnimalList extends Component {
         var registrationFailure = (
             <div>
                 <div className="iconFail"><HighlightOffIcon style={{ fontSize: 150 }}/></div>
-                <h3>Registration Failed!</h3>
+                <h3 style={{margin: 0}}>Registration Failed!</h3>
                 <h3>The collar ID could not be found.</h3>
                 <button onClick={() => this.setState({failModalOpen: false, registrationModalOpen: true})}>Try Again</button>
             </div>
@@ -82,7 +82,7 @@ class AnimalList extends Component {
             <div>
                 <div className="animalHeader">
                     <div className="myAnimals"><h1>My Animals</h1></div>
-                    <div className={'addIcon ' + this.props.loginStatus} onClick={this.openRegistrationModal}>
+                    <div className='addIconContainer' onClick={this.openRegistrationModal}>
                         <div className="addAPet">Add a Pet</div>
                         <div className="addIcon"><AddIcon fontSize='large'/></div>
                     </div>

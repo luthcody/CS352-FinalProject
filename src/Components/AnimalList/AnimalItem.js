@@ -20,6 +20,7 @@ class AnimalItem extends Component {
 
     deleteAnimal() {
         this.props.delete(this.props.index);
+        this.setState({isPopoverOpen: false});
     }
 
     render() {

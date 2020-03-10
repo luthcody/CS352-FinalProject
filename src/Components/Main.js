@@ -50,11 +50,20 @@ class Main extends Component {
     }
 
     deleteAnimal(index) {
-        // Implement Later
+        var newAnimals = [];
+        var oldAnimals = this.state.animals;
+        for(var i = 0; i < oldAnimals.length; i++){
+            if(i !== index){
+                newAnimals.push(oldAnimals[i]);
+            }
+        }
+        this.setState({animals: newAnimals});
     }
 
     resetMapPosition() {
-        this.setState({resetMap: !this.state.resetMap, showOne: false});
+        if(this.state.animals.length > 0){
+            this.setState({resetMap: !this.state.resetMap, showOne: false});
+        }
     }
 
     render() {
